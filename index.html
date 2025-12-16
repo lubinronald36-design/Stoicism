@@ -1,0 +1,154 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Audio Website</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+            color: #333;
+        }
+
+        nav {
+            background: #00796b;
+            padding: 10px 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        nav button {
+            background: #004d40;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        nav button:hover {
+            background: #00695c;
+        }
+
+        nav button.active {
+            background: #00bfa5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        section {
+            display: none;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        .card {
+            background: #ffffffcc;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #00796b;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        img.thumbnail {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        audio {
+            margin-top: 15px;
+            width: 100%;
+            outline: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <button id="btn-home" onclick="showSection('home')">Home</button>
+        <button id="btn-story" onclick="showSection('story')">Story</button>
+    </nav>
+
+    <div class="container">
+        <!-- Home Section -->
+        <section id="home" class="active">
+            <div class="card">
+                <h1>Welcome to My Audio Page</h1>
+                <img src="thumbnail.jpg" alt="Audio Thumbnail" class="thumbnail">
+                <p>Listen to my audio right here. Enjoy!</p>
+                <audio controls>
+                    <source src="dis.m4a" type="audio/m4a">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section id="story">
+            <div class="card">
+                <h1>My Story</h1>
+                <img src="thumbnail.jpg" alt="Story Thumbnail" class="thumbnail">
+                <p>This is a little story I want to share with you. I hope you enjoy it!</p>
+                <p>Here’s some text explaining the context of my audio...</p>
+                <audio controls>
+                    <source src="dis.m4a" type="audio/m4a">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2025 My Audio Website
+    </footer>
+
+    <script>
+        const buttons = {
+            home: document.getElementById('btn-home'),
+            story: document.getElementById('btn-story')
+        };
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+
+            // Update active button
+            Object.keys(buttons).forEach(key => buttons[key].classList.remove('active'));
+            buttons[sectionId].classList.add('active');
+        }
+
+        // Set initial active button
+        buttons.home.classList.add('active');
+    </script>
+</body>
+</html>
