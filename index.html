@@ -3,67 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Audio Page</title>
+<title>Audio Story</title>
+
 <style>
-  body {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+body {
     margin: 0;
-    padding: 0;
-  }
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #fff;
+    text-align: center;
+}
 
-  img {
-    max-width: 90%;
+/* Thumbnail container */
+.thumbnail-box {
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto;
+}
+
+.thumbnail-box img {
+    width: 100%;
     height: auto;
-    margin: 20px auto;
-    display: block;
-  }
+    object-fit: contain;
+    border-radius: 12px;
+}
 
-  button {
-    padding: 10px 20px;
+/* Buttons */
+button {
+    padding: 12px 20px;
     font-size: 16px;
-    margin: 10px;
-    cursor: pointer;
     border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: white;
-  }
+    border-radius: 8px;
+    cursor: pointer;
+    background: #1db954;
+    color: #000;
+    margin-top: 15px;
+}
 
-  button:hover {
-    background-color: #0056b3;
-  }
+/* Story section */
+.story {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 15px;
+}
 </style>
 </head>
+
 <body>
 
-<h1>Welcome to My Audio Page</h1>
+<h2>My Audio Story</h2>
 
-<!-- Thumbnail -->
-<img src="thumbnail.jpg" alt="Thumbnail">
+<div class="thumbnail-box">
+    <img src="thumbnail.jpg" alt="Story Thumbnail">
+</div>
 
-<!-- Background music (auto-loop) -->
-<audio id="bgMusic" loop autoplay>
-  <source src="beat4.mp3" type="audio/mpeg">
-  Your browser does not support audio.
+<!-- PLAY BUTTON (REQUIRED FOR AUTOPLAY RULES) -->
+<button onclick="startAudio()">▶ Play Story</button>
+
+<!-- Background music -->
+<audio id="bgMusic" loop>
+    <source src="beat.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Story voice -->
-<audio id="storyVoice">
-  <source src="nivo.mp3" type="audio/mpeg">
-  Your browser does not support audio.
+<!-- Voice story -->
+<audio id="voice">
+    <source src="nivo.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Buttons -->
-<button onclick="toggleStory()">▶ Play Story</button>
+<div class="story">
+    <p>
+        This is my story text.  
+        You can edit or add more paragraphs anytime.
+    </p>
+</div>
 
 <script>
-const storyAudio = document.getElementById('storyVoice');
-const storyButton = document.querySelector('button');
+function startAudio() {
+    const bg = document.getElementById("bgMusic");
+    const voice = document.getElementById("voice");
 
-function toggleStory() {
-  storyAudio.play().catch(err => console.log("Playback failed:", err));
+    bg.volume = 0.4; // softer background
+    bg.play();
+
+    voice.play();
 }
 </script>
 
