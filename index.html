@@ -1,11 +1,13 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Audio Website</title>
+
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -29,11 +31,6 @@
             padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
-            transition: 0.3s;
-        }
-
-        nav button:hover {
-            background: #00695c;
         }
 
         nav button.active {
@@ -41,7 +38,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 30px auto;
             padding: 20px;
         }
@@ -56,9 +53,9 @@
 
         .card {
             background: #ffffffcc;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
             margin-bottom: 20px;
             text-align: center;
         }
@@ -68,12 +65,16 @@
         }
 
         p {
-            line-height: 1.6;
+            line-height: 1.7;
+            text-align: left;
         }
 
+        /* Thumbnail fits normally (NO CROP) */
         img.thumbnail {
             width: 100%;
-            max-width: 300px;
+            max-height: 300px;
+            object-fit: contain;
+            background: #f5f5f5;
             border-radius: 15px;
             margin-bottom: 15px;
         }
@@ -81,75 +82,77 @@
         audio {
             margin-top: 15px;
             width: 100%;
-            outline: none;
         }
 
         footer {
             text-align: center;
-            padding: 15px;
-            font-size: 0.9em;
+            padding: 20px;
+            font-size: 0.95em;
             color: #555;
         }
     </style>
 </head>
+
 <body>
-    <nav>
-        <button id="btn-home" onclick="showSection('home')">Home</button>
-        <button id="btn-story" onclick="showSection('story')">Story</button>
-    </nav>
 
-    <div class="container">
-        <!-- Home Section -->
-        <section id="home" class="active">
-            <div class="card">
-                <h1>Welcome to My Audio Page</h1>
-                <img src="thumbnail.jpg" alt="Audio Thumbnail" class="thumbnail">
-                <p>Listen to my audio right here. Enjoy!</p>
-                <audio controls>
-                    <source src="nivo.mp3" type="audio/mp3">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-        </section>
-
-        <!-- Story Section -->
-        <section id="story">
-            <div class="card">
-                <h1>My Story</h1>
-                <img src="thumbnail.jpg" alt="Story Thumbnail" class="thumbnail">
-                <p>This is a little story I want to share with you. I hope you enjoy it!</p>
-                <p>Here’s some text explaining the context of my audio...</p>
-  <audio controls preload="metadata">
-    <source src="stoi.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
+<!-- Background Music -->
+<audio autoplay loop>
+    <source src="beat.mp3" type="audio/mpeg">
 </audio>
-            </div>
-        </section>
-    </div>
 
+<nav>
+    <button class="active" onclick="showPage('page1', this)">Audio & Pictures</button>
+    <button onclick="showPage('page2', this)">Thumbnail & Voice</button>
+</nav>
 
-    <footer>
-        &copy; 2025 My Audio Website
-    </footer>
+<div class="container">
 
-    <script>
-        const buttons = {
-            home: document.getElementById('btn-home'),
-            story: document.getElementById('btn-story')
-        };
+    <!-- PAGE 1 -->
+    <section id="page1" class="active">
+        <div class="card">
+            <h1>Stories & Sounds</h1>
 
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('section');
-            sections.forEach(sec => sec.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
+            <img src="thumbnail.jpg" class="thumbnail" alt="Story Image">
 
-            // Update active button
-            Object.keys(buttons).forEach(key => buttons[key].classList.remove('active'));
-            buttons[sectionId].classList.add('active');
-        }
+            <p>
+                This page contains audio and pictures.  
+                You can add more stories, images, and audio anytime.
+            </p>
 
-        // Set initial active button
-        buttons.home.classList.add('active');
-    </script>
+            <audio controls>
+                <source src="roi.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </section>
+
+    <!-- PAGE 2 -->
+    <section id="page2">
+        <div class="card">
+            <h1>Featured Audio</h1>
+
+            <img src="thumbnail.jpg" class="thumbnail" alt="Thumbnail">
+
+            <audio controls>
+                <source src="roi.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    © 2025 • My Audio Website
+</footer>
+
+<script>
+    function showPage(pageId, btn) {
+        document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+        document.getElementById(pageId).classList.add("active");
+
+        document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+    }
+</script>
+
 </body>
 </html>
