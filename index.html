@@ -1,170 +1,70 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Audio Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Audio Page</title>
+<style>
+  body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
 
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom, #e0f7fa, #ffffff);
-            color: #333;
-        }
+  img {
+    max-width: 90%;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+  }
 
-        nav {
-            background: #00796b;
-            padding: 10px 20px;
-            display: flex;
-            gap: 10px;
-        }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+  }
 
-        nav button {
-            background: #004d40;
-            color: #fff;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        nav button.active {
-            background: #00bfa5;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 20px;
-        }
-
-        section {
-            display: none;
-        }
-
-        section.active {
-            display: block;
-        }
-
-        .card {
-            background: #ffffffcc;
-            padding: 25px;
-            border-radius: 18px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #00796b;
-        }
-
-        p {
-            line-height: 1.7;
-            text-align: left;
-        }
-
-        /* Thumbnail fits normally (NO CROP) */
-        img.thumbnail {
-            width: 100%;
-            max-height: 300px;
-            object-fit: contain;
-            background: #f5f5f5;
-            border-radius: 15px;
-            margin-bottom: 15px;
-        }
-
-        audio {
-            margin-top: 15px;
-            width: 100%;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 0.95em;
-            color: #555;
-        }
-    </style>
+  button:hover {
+    background-color: #0056b3;
+  }
+</style>
 </head>
-
 <body>
 
-<!-- Background Music -->
-<audio id="bgMusic" loop preload="auto">
-  <source src="beat.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<h1>Welcome to My Audio Page</h1>
+
+<!-- Thumbnail -->
+<img src="thumbnail.jpg" alt="Thumbnail">
+
+<!-- Background music (auto-loop) -->
+<audio id="bgMusic" loop autoplay>
+  <source src="beat4.mp3" type="audio/mpeg">
+  Your browser does not support audio.
 </audio>
 
-<button onclick="playMusic()">▶ Play Music</button>
+<!-- Story voice -->
+<audio id="storyVoice">
+  <source src="nivo.mp3" type="audio/mpeg">
+  Your browser does not support audio.
+</audio>
+
+<!-- Buttons -->
+<button onclick="toggleStory()">▶ Play Story</button>
 
 <script>
-function playMusic() {
-  const audio = document.getElementById('bgMusic');
+const storyAudio = document.getElementById('storyVoice');
+const storyButton = document.querySelector('button');
 
-  audio.muted = false;
-  audio.volume = 0.6; // optional (nice for background)
-  
-  audio.play().catch(err => {
-    console.log("Playback failed:", err);
-  });
+function toggleStory() {
+  storyAudio.play().catch(err => console.log("Playback failed:", err));
 }
-</script>
-}
-</script>
-
-<div class="container">
-
-    <!-- PAGE 1 -->
-    <section id="page1" class="active">
-        <div class="card">
-            <h1>Stories & Sounds</h1>
-
-            <img src="thumbnail.jpg" class="thumbnail" alt="Story Image">
-
-            <p>
-                This page contains audio and pictures.  
-                You can add more stories, images, and audio anytime.
-            </p>
-
-            <audio controls>
-                <source src="roi.mp3" type="audio/mpeg">
-            </audio>
-        </div>
-    </section>
-
-    <!-- PAGE 2 -->
-    <section id="page2">
-        <div class="card">
-            <h1>Featured Audio</h1>
-
-            <img src="thumbnail.jpg" class="thumbnail" alt="Thumbnail">
-
-            <audio controls>
-                <source src="roi.mp3" type="audio/mpeg">
-            </audio>
-        </div>
-    </section>
-
-</div>
-
-<footer>
-    © 2025 • My Audio Website
-</footer>
-
-<script>
-    function showPage(pageId, btn) {
-        document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-        document.getElementById(pageId).classList.add("active");
-
-        document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-    }
 </script>
 
 </body>
