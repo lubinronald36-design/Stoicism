@@ -1,93 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Audio Story</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stoicism – Inner Strength</title>
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #111;
-    color: #fff;
-    text-align: center;
-}
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f4f4f4;
+      color: #222;
+      line-height: 1.7;
+    }
 
-/* Thumbnail container */
-.thumbnail-box {
-    width: 100%;
-    max-width: 500px;
-    margin: 30px auto;
-}
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: #ffffff;
+    }
 
-.thumbnail-box img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 12px;
-}
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
 
-/* Buttons */
-button {
-    padding: 12px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    background: #1db954;
-    color: #000;
-    margin-top: 15px;
-}
+    .thumbnail {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 20px auto;
+      border-radius: 10px;
+    }
 
-/* Story section */
-.story {
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 15px;
-}
-</style>
+    .audio-box {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .story {
+      margin-top: 30px;
+      font-size: 1.05rem;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding-top: 15px;
+      border-top: 1px solid #ddd;
+      font-size: 0.9rem;
+      text-align: center;
+      color: #555;
+    }
+  </style>
 </head>
 
 <body>
 
-<h2>My Audio Story</h2>
+  <div class="container">
 
-<div class="thumbnail-box">
-    <img src="thumbnail.jpg" alt="Story Thumbnail">
-</div>
+    <h1>Stoicism & Inner Peace</h1>
 
-<!-- PLAY BUTTON (REQUIRED FOR AUTOPLAY RULES) -->
-<button onclick="startAudio()">▶ Play Story</button>
+    <!-- Thumbnail Image -->
+    <img src="thumbnail.jpg" alt="Stoicism Image" class="thumbnail">
 
-<!-- Background music -->
-<audio id="bgMusic" loop>
-    <source src="beat.mp3" type="audio/mpeg">
-</audio>
+    <!-- Audio Player -->
+    <div class="audio-box">
+      <audio controls>
+        <source src="niva.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <p><em>Listen to the reflection while you read</em></p>
+    </div>
 
-<!-- Voice story -->
-<audio id="voice">
-    <source src="nivo.mp3" type="audio/mpeg">
-</audio>
+    <!-- Story Text -->
+    <div class="story">
+      <p>
+        Stoicism teaches us that peace does not come from controlling the world,
+        but from controlling ourselves. Life will always bring challenges,
+        losses, and unexpected changes. What defines us is not what happens,
+        but how we respond.
+      </p>
 
-<div class="story">
-    <p>
-        This is my story text.  
-        You can edit or add more paragraphs anytime.
-    </p>
-</div>
+      <p>
+        The Stoics believed that external things—money, status, praise, or blame—
+        are not fully within our control. Our thoughts, choices, and actions are.
+        When we focus on what is truly ours to govern, we free ourselves from
+        unnecessary suffering.
+      </p>
 
-<script>
-function startAudio() {
-    const bg = document.getElementById("bgMusic");
-    const voice = document.getElementById("voice");
+      <p>
+        To live as a Stoic is to practice patience in difficulty, humility in
+        success, and clarity in confusion. It is not about suppressing emotions,
+        but understanding them and choosing reason over impulse.
+      </p>
 
-    bg.volume = 0.4; // softer background
-    bg.play();
+      <p>
+        Every day is an opportunity to train the mind: to accept what is,
+        to act with virtue, and to remain calm amid chaos. This is the quiet
+        strength that Stoicism offers to anyone willing to practice it.
+      </p>
+    </div>
 
-    voice.play();
-}
-</script>
+    <!-- Footer -->
+    <footer>
+      Contact Teacher Ronald<br>
+      WhatsApp: +509 3573 7556
+    </footer>
+
+  </div>
 
 </body>
-</html>
+</html> 
